@@ -196,10 +196,16 @@ class PlaybackPipeline:
 
     def score_and_sort(self, candidates):
         """Seřadí kandidáty: preferovaný jazyk > kvalita > velikost."""
+        # Mapování indexů ze settings (type="integer") na skutečné hodnoty
+        _LANG_MAP = {0: 'cs', 1: 'sk', 2: 'en', '0': 'cs', '1': 'sk', '2': 'en'}
+        _QUAL_MAP = {0: '4K', 1: '1080p', 2: '720p', 3: '480p',
+                     '0': '4K', '1': '1080p', '2': '720p', '3': '480p'}
         try:
             from resources.lib.kodiutils import get_setting
-            pref_lang = get_setting('stream.preferred_lang') or 'cs'
-            pref_quality = get_setting('stream.preferred_quality') or '1080p'
+            _lang_raw = get_setting('stream.preferred_lang')
+            _qual_raw = get_setting('stream.preferred_quality')
+            pref_lang = _LANG_MAP.get(_lang_raw, _LANG_MAP.get(int(_lang_raw or 0), 'cs'))
+            pref_quality = _QUAL_MAP.get(_qual_raw, _QUAL_MAP.get(int(_qual_raw or 1), '1080p'))
         except Exception:
             pref_lang = 'cs'
             pref_quality = '1080p'

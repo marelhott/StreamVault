@@ -26,16 +26,27 @@ class DebridManager:
             cls._instance = cls()
         return cls._instance
 
+    # Mapování integer indexu ze settings.xml na interní service ID
+    _SVC_INDEX_MAP = {
+        '0': None,
+        '1': DEBRID_REALDEBRID,
+        '2': DEBRID_ALLDEBRID,
+        '3': DEBRID_PREMIUMIZE,
+        '4': DEBRID_TORBOX,
+    }
+
     def _load(self):
         if self._client is not None:
             return self._client
         try:
             from resources.lib.kodiutils import get_setting
-            svc = get_setting('debrid.service')
+            svc_raw = get_setting('debrid.service')
+            # Pokud je to numerický index (nový settings formát), přeložíme na service ID
+            svc = self._SVC_INDEX_MAP.get(str(svc_raw), svc_raw)
         except Exception:
             svc = None
 
-        if not svc or svc in ('', '0', 'none'):
+        if not svc or svc in ('', '0', 'none', None):
             debug('debrid: žádná služba nenakonfigurována')
             self._client = None
             return None

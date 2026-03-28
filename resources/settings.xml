@@ -1,109 +1,349 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<settings>
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="2">
 
-    <!-- kra.sk -->
-    <category label="kra.sk">
-        <setting type="lsep" label="Prihlaseni"/>
-        <setting type="text"   label="Uzivatelske jmeno" id="kraska.user"      default="mulenmara"/>
-        <setting type="text"   label="Heslo"             id="kraska.pass"      default="Maho1505" option="hidden"/>
-        <setting type="text"   label="Dni predplatneho"  id="kraska.days.left" default="" enable="false"/>
-        <setting type="sep"/>
-        <setting type="lsep" label="Pokrocile"/>
-        <setting type="text"   label="Preferovany server (prazdne = auto)" id="stream.adv.speedtest.best_server" default=""/>
-        <setting type="text" id="kraska.token"              default="" visible="false"/>
-        <setting type="text" id="kraska.chsum"              default="" visible="false"/>
-        <setting type="text" id="system.auth_token"         default="" visible="false"/>
-        <setting type="text" id="system.auth_token_updated" default="" visible="false"/>
-        <setting type="text" id="system.ver"                default="" visible="false"/>
-        <setting type="text" id="system.changelog"          default="" visible="false"/>
-        <setting type="text" id="plugin.uuid"               default="" visible="false"/>
-    </category>
+    <!-- ═══════════════════════════════════════════ kra.sk ═════ -->
+    <section id="kraska_section">
+        <category id="kraska" label="kra.sk">
 
-    <!-- WebShare.cz -->
-    <category label="WebShare.cz">
-        <setting type="bool"   label="Pouzit WebShare jako zalozu" id="webshare.enabled" default="true"/>
-        <setting type="text"   label="Uzivatelske jmeno" id="webshare.user" default="oretlogin"  enable="eq(-1,true)"/>
-        <setting type="text"   label="Heslo"             id="webshare.pass" default="Maho1505"   enable="eq(-2,true)" option="hidden"/>
-        <setting type="text" id="webshare.wst" default="" visible="false"/>
-    </category>
+            <group id="1" label="Přihlášení">
+                <setting id="kraska.user" type="string" label="Uživatelské jméno">
+                    <default>mulenmara</default>
+                </setting>
+                <setting id="kraska.pass" type="string" label="Heslo">
+                    <default>Maho1505</default>
+                    <constraints>
+                        <hidden>true</hidden>
+                    </constraints>
+                </setting>
+                <setting id="kraska.days.left" type="string" label="Dny předplatného">
+                    <default></default>
+                    <dependencies>
+                        <dependency type="enable" value="false"/>
+                    </dependencies>
+                </setting>
+            </group>
 
-    <!-- Prehravani -->
-    <category label="Prehravani">
-        <setting type="bool"   label="Automaticky vybrat nejlepsi stream"  id="stream.auto_pick"         default="true"/>
-        <setting type="select" label="Preferovana kvalita"                 id="stream.preferred_quality" values="4K|1080p|720p|480p" default="1080p"/>
-        <setting type="select" label="Preferovany jazyk"                   id="stream.preferred_lang"    values="cs|sk|en"           default="cs"/>
-        <setting type="bool"   label="Zobrazit HDR streamy"      id="stream.show.hdr" default="true"/>
-        <setting type="bool"   label="Zobrazit Dolby Vision"     id="stream.show.dv"  default="true"/>
-        <setting type="bool"   label="Preferovat dabing"         id="stream.dubed"    default="false"/>
-        <setting type="bool"   label="Titulkovane verze"         id="stream.dubed.titles" default="false"/>
-        <setting type="bool"   label="Vyloucit HDR"              id="stream.exclude.hdr"         default="false"/>
-        <setting type="bool"   label="Vyloucit Dolby Vision"     id="stream.exclude.dolbyvision"  default="false"/>
-    </category>
+            <group id="2" label="Pokročilé">
+                <setting id="stream.adv.speedtest.best_server" type="string" label="Preferovaný server (prázdné = auto)">
+                    <default></default>
+                </setting>
+            </group>
 
-    <!-- Zahranicni obsah -->
-    <category label="Zahranicni obsah">
-        <setting type="bool"   label="Zapnout zahranicni obsah (debrid)" id="intl.enabled" default="true"/>
-        <setting type="select" label="Debrid sluzba"
-                               id="debrid.service"
-                               values="Vypnuto|Real-Debrid|AllDebrid|Premiumize|TorBox"
-                               default="Real-Debrid"/>
-        <setting type="text"   label="API klic debrid"
-                               id="debrid.api_key"
-                               default="VLGVHWAO64GBQIWWZUVV5XE2F3J7ZK3SEEZDIOJFOTOBCUSMYA4Q"
-                               option="hidden"/>
-    </category>
+            <group id="3">
+                <setting id="kraska.token" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="kraska.chsum" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="system.auth_token" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="system.auth_token_updated" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="system.ver" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="system.changelog" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+                <setting id="plugin.uuid" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+            </group>
 
-    <!-- Metadata -->
-    <category label="Metadata (TMDB)">
-        <setting type="bool"   label="Obohacovat metadata z TMDB" id="tmdb.enabled"  default="true"/>
-        <setting type="text"   label="TMDB API klic (volitelny)"  id="tmdb.api_key"  default=""/>
-        <setting type="select" label="Jazyk metadat"              id="tmdb.language" values="cs|sk|en" default="cs"/>
-    </category>
+        </category>
+    </section>
 
-    <!-- Knihovna -->
-    <category label="Knihovna">
-        <setting type="folder" label="Slozka pro filmy"   id="movie.library.path"  source=""/>
-        <setting type="action" label="Test filmove knihovny"
-                               action="RunPlugin(plugin://plugin.video.streamvault?action=test_movie_library_path)"
-                               enable="!eq(-1,)"/>
-        <setting type="folder" label="Slozka pro serialy" id="tvshow.library.path" source=""/>
-        <setting type="action" label="Test serialove knihovny"
-                               action="RunPlugin(plugin://plugin.video.streamvault?action=test_tvshow_library_path)"
-                               enable="!eq(-1,)"/>
-        <setting type="select" label="Rezim metadat"
-                               id="library.metadata.mode"
-                               values="Pouze STRM|STRM + NFO"
-                               default="STRM + NFO"/>
-        <setting type="select" label="Aktualizovat knihovnu po exportu"
-                               id="library.update.mode"
-                               values="Ne|Ano"
-                               default="Ano"/>
-    </category>
+    <!-- ═══════════════════════════════════════ WebShare.cz ════ -->
+    <section id="webshare_section">
+        <category id="webshare" label="WebShare.cz">
 
-    <!-- Rodicovska kontrola -->
-    <category label="Rodicovska kontrola">
-        <setting type="bool"   label="Zapnout rodicovskou kontrolu" id="parental.control.enabled" default="false"/>
-        <setting type="select" label="Maximalni hodnoceni"
-                               id="parental.control.rating"
-                               values="Bez omezeni|6+|12+|15+|18+"
-                               default="Bez omezeni"
-                               enable="eq(-1,true)"/>
-        <setting type="slider" label="Aktivni od hodiny" id="parental.control.start" default="20" range="0,1,23" enable="eq(-2,true)"/>
-        <setting type="slider" label="Aktivni do hodiny" id="parental.control.end"   default="22" range="0,1,23" enable="eq(-3,true)"/>
-        <setting type="bool"   label="Jen dabing pri rodicovske kontrole" id="parental.control.dubed" default="true" enable="eq(-4,true)"/>
-    </category>
+            <group id="1">
+                <setting id="webshare.enabled" type="boolean" label="Použít WebShare jako zálohu">
+                    <default>true</default>
+                </setting>
+                <setting id="webshare.user" type="string" label="Uživatelské jméno">
+                    <default>oretlogin</default>
+                    <dependencies>
+                        <dependency type="enable" setting="webshare.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+                <setting id="webshare.pass" type="string" label="Heslo">
+                    <default>Maho1505</default>
+                    <constraints>
+                        <hidden>true</hidden>
+                    </constraints>
+                    <dependencies>
+                        <dependency type="enable" setting="webshare.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+                <setting id="webshare.wst" type="string">
+                    <default></default>
+                    <visible>false</visible>
+                </setting>
+            </group>
 
-    <!-- Vzhled -->
-    <category label="Vzhled">
-        <setting type="bool" label="Zobrazit zanr v titulku" id="plugin.show.genre"    default="false"/>
-        <setting type="bool" label="Zobrazit stare menu"     id="plugin.show.old.menu" default="false"/>
-    </category>
+        </category>
+    </section>
 
-    <!-- Ladeni -->
-    <category label="Ladeni">
-        <setting type="bool"   label="Zapnout debug log" id="plugin.debug" default="false"/>
-        <setting type="action" label="Odeslat debug log"
-                               action="RunPlugin(plugin://plugin.video.streamvault?action=debug)"/>
-    </category>
+    <!-- ══════════════════════════════════════ Přehrávání ══════ -->
+    <section id="playback_section">
+        <category id="playback" label="Přehrávání">
+
+            <group id="1">
+                <setting id="stream.auto_pick" type="boolean" label="Automaticky vybrat nejlepší stream">
+                    <default>true</default>
+                </setting>
+                <setting id="stream.preferred_quality" type="integer" label="Preferovaná kvalita">
+                    <default>1</default>
+                    <constraints>
+                        <options>
+                            <option label="4K">0</option>
+                            <option label="1080p">1</option>
+                            <option label="720p">2</option>
+                            <option label="480p">3</option>
+                        </options>
+                    </constraints>
+                </setting>
+                <setting id="stream.preferred_lang" type="integer" label="Preferovaný jazyk">
+                    <default>0</default>
+                    <constraints>
+                        <options>
+                            <option label="cs">0</option>
+                            <option label="sk">1</option>
+                            <option label="en">2</option>
+                        </options>
+                    </constraints>
+                </setting>
+            </group>
+
+            <group id="2" label="Video formáty">
+                <setting id="stream.show.hdr" type="boolean" label="Zobrazit HDR streamy">
+                    <default>true</default>
+                </setting>
+                <setting id="stream.show.dv" type="boolean" label="Zobrazit Dolby Vision">
+                    <default>true</default>
+                </setting>
+                <setting id="stream.dubed" type="boolean" label="Preferovat dabing">
+                    <default>false</default>
+                </setting>
+                <setting id="stream.dubed.titles" type="boolean" label="Titulkované verze">
+                    <default>false</default>
+                </setting>
+                <setting id="stream.exclude.hdr" type="boolean" label="Vyloučit HDR">
+                    <default>false</default>
+                </setting>
+                <setting id="stream.exclude.dolbyvision" type="boolean" label="Vyloučit Dolby Vision">
+                    <default>false</default>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ═══════════════════════════════════ Zahraniční obsah ═══ -->
+    <section id="intl_section">
+        <category id="intl" label="Zahraniční obsah">
+
+            <group id="1">
+                <setting id="intl.enabled" type="boolean" label="Zapnout zahraniční obsah (debrid)">
+                    <default>true</default>
+                </setting>
+                <setting id="debrid.service" type="integer" label="Debrid služba">
+                    <default>1</default>
+                    <constraints>
+                        <options>
+                            <option label="Vypnuto">0</option>
+                            <option label="Real-Debrid">1</option>
+                            <option label="AllDebrid">2</option>
+                            <option label="Premiumize">3</option>
+                            <option label="TorBox">4</option>
+                        </options>
+                    </constraints>
+                </setting>
+                <setting id="debrid.api_key" type="string" label="API klíč debrid">
+                    <default>VLGVHWAO64GBQIWWZUVV5XE2F3J7ZK3SEEZDIOJFOTOBCUSMYA4Q</default>
+                    <constraints>
+                        <hidden>true</hidden>
+                    </constraints>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ════════════════════════════════════ Metadata (TMDB) ═══ -->
+    <section id="tmdb_section">
+        <category id="tmdb" label="Metadata (TMDB)">
+
+            <group id="1">
+                <setting id="tmdb.enabled" type="boolean" label="Obohacovat metadata z TMDB">
+                    <default>true</default>
+                </setting>
+                <setting id="tmdb.api_key" type="string" label="TMDB API klíč (volitelný)">
+                    <default></default>
+                </setting>
+                <setting id="tmdb.language" type="integer" label="Jazyk metadat">
+                    <default>0</default>
+                    <constraints>
+                        <options>
+                            <option label="cs">0</option>
+                            <option label="sk">1</option>
+                            <option label="en">2</option>
+                        </options>
+                    </constraints>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ══════════════════════════════════════════ Knihovna ════ -->
+    <section id="library_section">
+        <category id="library" label="Knihovna">
+
+            <group id="1">
+                <setting id="movie.library.path" type="path" label="Složka pro filmy">
+                    <default></default>
+                </setting>
+                <setting id="test_movie_library" type="action" label="Test filmové knihovny">
+                    <default>RunPlugin(plugin://plugin.video.streamvault?action=test_movie_library_path)</default>
+                    <dependencies>
+                        <dependency type="enable" setting="movie.library.path" operator="gt" value=""/>
+                    </dependencies>
+                </setting>
+                <setting id="tvshow.library.path" type="path" label="Složka pro seriály">
+                    <default></default>
+                </setting>
+                <setting id="test_tvshow_library" type="action" label="Test seriálové knihovny">
+                    <default>RunPlugin(plugin://plugin.video.streamvault?action=test_tvshow_library_path)</default>
+                    <dependencies>
+                        <dependency type="enable" setting="tvshow.library.path" operator="gt" value=""/>
+                    </dependencies>
+                </setting>
+            </group>
+
+            <group id="2">
+                <setting id="library.metadata.mode" type="integer" label="Režim metadat">
+                    <default>1</default>
+                    <constraints>
+                        <options>
+                            <option label="Pouze STRM">0</option>
+                            <option label="STRM + NFO">1</option>
+                        </options>
+                    </constraints>
+                </setting>
+                <setting id="library.update.mode" type="integer" label="Aktualizovat knihovnu po exportu">
+                    <default>1</default>
+                    <constraints>
+                        <options>
+                            <option label="Ne">0</option>
+                            <option label="Ano">1</option>
+                        </options>
+                    </constraints>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ══════════════════════════════ Rodičovská kontrola ════ -->
+    <section id="parental_section">
+        <category id="parental" label="Rodičovská kontrola">
+
+            <group id="1">
+                <setting id="parental.control.enabled" type="boolean" label="Zapnout rodičovskou kontrolu">
+                    <default>false</default>
+                </setting>
+                <setting id="parental.control.rating" type="integer" label="Maximální hodnocení">
+                    <default>0</default>
+                    <constraints>
+                        <options>
+                            <option label="Bez omezení">0</option>
+                            <option label="6+">1</option>
+                            <option label="12+">2</option>
+                            <option label="15+">3</option>
+                            <option label="18+">4</option>
+                        </options>
+                    </constraints>
+                    <dependencies>
+                        <dependency type="enable" setting="parental.control.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+                <setting id="parental.control.start" type="slider" label="Aktivní od hodiny">
+                    <default>20</default>
+                    <constraints>
+                        <minimum>0</minimum>
+                        <step>1</step>
+                        <maximum>23</maximum>
+                        <format>integer</format>
+                    </constraints>
+                    <dependencies>
+                        <dependency type="enable" setting="parental.control.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+                <setting id="parental.control.end" type="slider" label="Aktivní do hodiny">
+                    <default>22</default>
+                    <constraints>
+                        <minimum>0</minimum>
+                        <step>1</step>
+                        <maximum>23</maximum>
+                        <format>integer</format>
+                    </constraints>
+                    <dependencies>
+                        <dependency type="enable" setting="parental.control.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+                <setting id="parental.control.dubed" type="boolean" label="Jen dabing při rodičovské kontrole">
+                    <default>true</default>
+                    <dependencies>
+                        <dependency type="enable" setting="parental.control.enabled" operator="is" value="true"/>
+                    </dependencies>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ══════════════════════════════════════════ Vzhled ══════ -->
+    <section id="appearance_section">
+        <category id="appearance" label="Vzhled">
+
+            <group id="1">
+                <setting id="plugin.show.genre" type="boolean" label="Zobrazit žánr v titulku">
+                    <default>false</default>
+                </setting>
+                <setting id="plugin.show.old.menu" type="boolean" label="Zobrazit staré menu">
+                    <default>false</default>
+                </setting>
+            </group>
+
+        </category>
+    </section>
+
+    <!-- ══════════════════════════════════════════ Ladění ══════ -->
+    <section id="debug_section">
+        <category id="debug" label="Ladění">
+
+            <group id="1">
+                <setting id="plugin.debug" type="boolean" label="Zapnout debug log">
+                    <default>false</default>
+                </setting>
+                <setting id="debug_send" type="action" label="Odeslat debug log">
+                    <default>RunPlugin(plugin://plugin.video.streamvault?action=debug)</default>
+                </setting>
+            </group>
+
+        </category>
+    </section>
 
 </settings>
