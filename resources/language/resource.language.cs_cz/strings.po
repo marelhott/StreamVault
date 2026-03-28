@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgctxt "#30001"
+msgid "kra.sk"
+msgstr "kra.sk"
+
+msgctxt "#30002"
+msgid "WebShare.cz"
+msgstr "WebShare.cz"
+
+msgctxt "#30003"
+msgid "Přehrávání"
+msgstr "Přehrávání"
+
+msgctxt "#30004"
+msgid "Zahraniční obsah"
+msgstr "Zahraniční obsah"
+
+msgctxt "#30005"
+msgid "Metadata"
+msgstr "Metadata"
+
+msgctxt "#30006"
+msgid "Knihovna"
+msgstr "Knihovna"
+
+msgctxt "#30007"
+msgid "Rodičovská kontrola"
+msgstr "Rodičovská kontrola"
+
+msgctxt "#30008"
+msgid "Ladění"
+msgstr "Ladění"
+
+# --- Knihovna ---
+msgctxt "#30060"
+msgid "Přidat film do knihovny"
+msgstr "Přidat film do knihovny"
+
+msgctxt "#30061"
+msgid "Přidat seriál do knihovny"
+msgstr "Přidat seriál do knihovny"
+
+msgctxt "#30062"
+msgid "Složka pro filmy"
+msgstr "Složka pro filmy"
+
+msgctxt "#30063"
+msgid "Složka pro seriály"
+msgstr "Složka pro seriály"
+
+msgctxt "#30064"
+msgid "Zapsat metadata (NFO)"
+msgstr "Zapsat metadata (NFO)"
+
+msgctxt "#30065"
+msgid "Odebrat z knihovny"
+msgstr "Odebrat z knihovny"
+
+# --- Playback ---
+msgctxt "#30080"
+msgid "Vybrat stream"
+msgstr "Vybrat stream"
+
+msgctxt "#30081"
+msgid "Přehrát (mezinárodní / debrid)"
+msgstr "Přehrát (mezinárodní / debrid)"
+
+# --- Chybové hlášky ---
+msgctxt "#30100"
+msgid "Přihlášení selhalo. Zkontroluj údaje v nastavení."
+msgstr "Přihlášení selhalo. Zkontroluj údaje v nastavení."
+
+msgctxt "#30101"
+msgid "Žádné streamy nebyly nalezeny."
+msgstr "Žádné streamy nebyly nalezeny."
+
+msgctxt "#30102"
+msgid "Nepodařilo se získat odkaz ke streamu."
+msgstr "Nepodařilo se získat odkaz ke streamu."
+
+msgctxt "#30103"
+msgid "Nemáš aktivní předplatné."
+msgstr "Nemáš aktivní předplatné."
+
+msgctxt "#30104"
+msgid "Provider nereagoval včas."
+msgstr "Provider nereagoval včas."
