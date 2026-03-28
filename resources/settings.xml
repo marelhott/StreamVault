@@ -24,7 +24,7 @@
 
         <setting id="kraska.days.left" type="string" label="Dny předplatného">
           <level>0</level>
-          <default></default>
+          <default/>
           <control type="edit" format="string">
             <heading>Dny předplatného</heading>
           </control>
@@ -35,7 +35,7 @@
 
         <setting id="stream.adv.speedtest.best_server" type="string" label="Preferovaný server (prázdné = auto)">
           <level>2</level>
-          <default></default>
+          <default/>
           <control type="edit" format="string">
             <heading>Preferovaný server</heading>
           </control>
@@ -46,42 +46,42 @@
 
         <setting id="kraska.token" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="kraska.chsum" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="system.auth_token" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="system.auth_token_updated" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="system.ver" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="system.changelog" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
@@ -95,14 +95,14 @@
 
         <setting id="androidtv.path" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
 
         <setting id="plugin.uuid" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
@@ -138,7 +138,7 @@
 
         <setting id="webshare.wst" type="string">
           <level>5</level>
-          <default></default>
+          <default/>
           <visible>false</visible>
           <control type="edit" format="string" />
         </setting>
@@ -273,7 +273,7 @@
 
         <setting id="tmdb.api_key" type="string" label="TMDB API klíč (volitelný)">
           <level>0</level>
-          <default></default>
+          <default/>
           <control type="edit" format="string">
             <heading>TMDB API klíč</heading>
           </control>
@@ -301,7 +301,10 @@
 
         <setting id="movie.library.path" type="path" label="Složka pro filmy">
           <level>0</level>
-          <default></default>
+          <default/>
+          <constraints>
+            <allowempty>true</allowempty>
+          </constraints>
           <control type="button" format="path">
             <heading>Vyberte složku pro filmy</heading>
           </control>
@@ -309,7 +312,10 @@
 
         <setting id="tvshow.library.path" type="path" label="Složka pro seriály">
           <level>0</level>
-          <default></default>
+          <default/>
+          <constraints>
+            <allowempty>true</allowempty>
+          </constraints>
           <control type="button" format="path">
             <heading>Vyberte složku pro seriály</heading>
           </control>
