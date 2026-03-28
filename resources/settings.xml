@@ -1,262 +1,437 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings version="2">
+<settings version="1">
+  <section id="plugin.video.streamvault">
 
-    <!-- ═══════════════════════════ kra.sk ═══════════════════════════ -->
+    <!-- ══════════════════════════════════════════ kra.sk ══════════ -->
     <category id="kraska" label="kra.sk">
-        <group id="1" label="Přihlášení">
-            <setting id="kraska.user" type="string" label="Uživatelské jméno">
-                <default>mulenmara</default>
-            </setting>
-            <setting id="kraska.pass" type="string" label="Heslo">
-                <default>Maho1505</default>
-            </setting>
-            <setting id="kraska.days.left" type="string" label="Dny předplatného">
-                <default></default>
-            </setting>
-        </group>
-        <group id="2" label="Pokročilé">
-            <setting id="stream.adv.speedtest.best_server" type="string" label="Preferovaný server (prázdné = auto)">
-                <default></default>
-            </setting>
-        </group>
-        <group id="9">
-            <setting id="kraska.token" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="kraska.chsum" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="system.auth_token" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="system.auth_token_updated" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="system.ver" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="system.changelog" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-            <setting id="plugin.uuid" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-        </group>
+      <group id="1" label="Přihlášení">
+
+        <setting id="kraska.user" type="string" label="Uživatelské jméno">
+          <level>0</level>
+          <default>mulenmara</default>
+          <control type="edit" format="string">
+            <heading>Uživatelské jméno kra.sk</heading>
+          </control>
+        </setting>
+
+        <setting id="kraska.pass" type="string" label="Heslo">
+          <level>0</level>
+          <default>Maho1505</default>
+          <control type="edit" format="string" hidden="true">
+            <heading>Heslo kra.sk</heading>
+          </control>
+        </setting>
+
+        <setting id="kraska.days.left" type="string" label="Dny předplatného">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string">
+            <heading>Dny předplatného</heading>
+          </control>
+        </setting>
+
+      </group>
+      <group id="2" label="Pokročilé">
+
+        <setting id="stream.adv.speedtest.best_server" type="string" label="Preferovaný server (prázdné = auto)">
+          <level>2</level>
+          <default></default>
+          <control type="edit" format="string">
+            <heading>Preferovaný server</heading>
+          </control>
+        </setting>
+
+      </group>
+      <group id="9">
+
+        <setting id="kraska.token" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="kraska.chsum" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="system.auth_token" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="system.auth_token_updated" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="system.ver" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="system.changelog" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="system.autoexec" type="boolean">
+          <level>5</level>
+          <default>false</default>
+          <visible>false</visible>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="androidtv.path" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+        <setting id="plugin.uuid" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ═══════════════════════ WebShare.cz ══════════════════════════ -->
+    <!-- ════════════════════════════════════ WebShare.cz ══════════ -->
     <category id="webshare" label="WebShare.cz">
-        <group id="1">
-            <setting id="webshare.enabled" type="boolean" label="Použít WebShare jako zálohu">
-                <default>true</default>
-            </setting>
-            <setting id="webshare.user" type="string" label="Uživatelské jméno">
-                <default>oretlogin</default>
-            </setting>
-            <setting id="webshare.pass" type="string" label="Heslo">
-                <default>Maho1505</default>
-            </setting>
-            <setting id="webshare.wst" type="string">
-                <default></default>
-                <visible>false</visible>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="webshare.enabled" type="boolean" label="Použít WebShare jako zálohu">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="webshare.user" type="string" label="Uživatelské jméno">
+          <level>0</level>
+          <default>oretlogin</default>
+          <control type="edit" format="string">
+            <heading>Uživatelské jméno WebShare</heading>
+          </control>
+        </setting>
+
+        <setting id="webshare.pass" type="string" label="Heslo">
+          <level>0</level>
+          <default>Maho1505</default>
+          <control type="edit" format="string" hidden="true">
+            <heading>Heslo WebShare</heading>
+          </control>
+        </setting>
+
+        <setting id="webshare.wst" type="string">
+          <level>5</level>
+          <default></default>
+          <visible>false</visible>
+          <control type="edit" format="string" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ════════════════════════ Přehrávání ══════════════════════════ -->
+    <!-- ════════════════════════════════════ Přehrávání ══════════ -->
     <category id="playback" label="Přehrávání">
-        <group id="1">
-            <setting id="stream.auto_pick" type="boolean" label="Automaticky vybrat nejlepší stream">
-                <default>true</default>
-            </setting>
-            <setting id="stream.preferred_quality" type="integer" label="Preferovaná kvalita">
-                <default>1</default>
-                <constraints>
-                    <options>
-                        <option label="4K">0</option>
-                        <option label="1080p">1</option>
-                        <option label="720p">2</option>
-                        <option label="480p">3</option>
-                    </options>
-                </constraints>
-            </setting>
-            <setting id="stream.preferred_lang" type="integer" label="Preferovaný jazyk">
-                <default>0</default>
-                <constraints>
-                    <options>
-                        <option label="cs">0</option>
-                        <option label="sk">1</option>
-                        <option label="en">2</option>
-                    </options>
-                </constraints>
-            </setting>
-        </group>
-        <group id="2" label="Filtry">
-            <setting id="stream.show.hdr" type="boolean" label="Zobrazit HDR streamy">
-                <default>true</default>
-            </setting>
-            <setting id="stream.show.dv" type="boolean" label="Zobrazit Dolby Vision">
-                <default>true</default>
-            </setting>
-            <setting id="stream.dubed" type="boolean" label="Preferovat dabing">
-                <default>false</default>
-            </setting>
-            <setting id="stream.dubed.titles" type="boolean" label="Titulkované verze">
-                <default>false</default>
-            </setting>
-            <setting id="stream.exclude.hdr" type="boolean" label="Vyloučit HDR">
-                <default>false</default>
-            </setting>
-            <setting id="stream.exclude.dolbyvision" type="boolean" label="Vyloučit Dolby Vision">
-                <default>false</default>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="stream.auto_pick" type="boolean" label="Automaticky vybrat nejlepší stream">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.preferred_quality" type="integer" label="Preferovaná kvalita">
+          <level>0</level>
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="4K">0</option>
+              <option label="1080p">1</option>
+              <option label="720p">2</option>
+              <option label="480p">3</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+        <setting id="stream.preferred_lang" type="integer" label="Preferovaný jazyk">
+          <level>0</level>
+          <default>0</default>
+          <constraints>
+            <options>
+              <option label="cs">0</option>
+              <option label="sk">1</option>
+              <option label="en">2</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+      </group>
+      <group id="2" label="Filtry">
+
+        <setting id="stream.show.hdr" type="boolean" label="Zobrazit HDR streamy">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.show.dv" type="boolean" label="Zobrazit Dolby Vision">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.dubed" type="boolean" label="Preferovat dabing">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.dubed.titles" type="boolean" label="Titulkované verze">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.exclude.hdr" type="boolean" label="Vyloučit HDR">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="stream.exclude.dolbyvision" type="boolean" label="Vyloučit Dolby Vision">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ══════════════════════ Zahraniční obsah ══════════════════════ -->
+    <!-- ════════════════════════════════ Zahraniční obsah ════════ -->
     <category id="intl" label="Zahraniční obsah">
-        <group id="1">
-            <setting id="intl.enabled" type="boolean" label="Zapnout zahraniční obsah (debrid)">
-                <default>true</default>
-            </setting>
-            <setting id="debrid.service" type="integer" label="Debrid služba">
-                <default>1</default>
-                <constraints>
-                    <options>
-                        <option label="Vypnuto">0</option>
-                        <option label="Real-Debrid">1</option>
-                        <option label="AllDebrid">2</option>
-                        <option label="Premiumize">3</option>
-                        <option label="TorBox">4</option>
-                    </options>
-                </constraints>
-            </setting>
-            <setting id="debrid.api_key" type="string" label="API klíč debrid">
-                <default>VLGVHWAO64GBQIWWZUVV5XE2F3J7ZK3SEEZDIOJFOTOBCUSMYA4Q</default>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="intl.enabled" type="boolean" label="Zapnout zahraniční obsah (debrid)">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="debrid.service" type="integer" label="Debrid služba">
+          <level>0</level>
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="Vypnuto">0</option>
+              <option label="Real-Debrid">1</option>
+              <option label="AllDebrid">2</option>
+              <option label="Premiumize">3</option>
+              <option label="TorBox">4</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+        <setting id="debrid.api_key" type="string" label="API klíč debrid">
+          <level>0</level>
+          <default>VLGVHWAO64GBQIWWZUVV5XE2F3J7ZK3SEEZDIOJFOTOBCUSMYA4Q</default>
+          <control type="edit" format="string" hidden="true">
+            <heading>API klíč debrid</heading>
+          </control>
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ══════════════════════ Metadata (TMDB) ═══════════════════════ -->
+    <!-- ════════════════════════════════════ Metadata ════════════ -->
     <category id="tmdb" label="Metadata (TMDB)">
-        <group id="1">
-            <setting id="tmdb.enabled" type="boolean" label="Obohacovat metadata z TMDB">
-                <default>true</default>
-            </setting>
-            <setting id="tmdb.api_key" type="string" label="TMDB API klíč (volitelný)">
-                <default></default>
-            </setting>
-            <setting id="tmdb.language" type="integer" label="Jazyk metadat">
-                <default>0</default>
-                <constraints>
-                    <options>
-                        <option label="cs">0</option>
-                        <option label="sk">1</option>
-                        <option label="en">2</option>
-                    </options>
-                </constraints>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="tmdb.enabled" type="boolean" label="Obohacovat metadata z TMDB">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="tmdb.api_key" type="string" label="TMDB API klíč (volitelný)">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string">
+            <heading>TMDB API klíč</heading>
+          </control>
+        </setting>
+
+        <setting id="tmdb.language" type="integer" label="Jazyk metadat">
+          <level>0</level>
+          <default>0</default>
+          <constraints>
+            <options>
+              <option label="cs">0</option>
+              <option label="sk">1</option>
+              <option label="en">2</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ═══════════════════════════ Knihovna ═════════════════════════ -->
+    <!-- ════════════════════════════════════ Knihovna ════════════ -->
     <category id="library" label="Knihovna">
-        <group id="1">
-            <setting id="movie.library.path" type="path" label="Složka pro filmy">
-                <default></default>
-            </setting>
-            <setting id="tvshow.library.path" type="path" label="Složka pro seriály">
-                <default></default>
-            </setting>
-        </group>
-        <group id="2">
-            <setting id="library.metadata.mode" type="integer" label="Režim metadat">
-                <default>1</default>
-                <constraints>
-                    <options>
-                        <option label="Pouze STRM">0</option>
-                        <option label="STRM + NFO">1</option>
-                    </options>
-                </constraints>
-            </setting>
-            <setting id="library.update.mode" type="integer" label="Aktualizovat knihovnu po exportu">
-                <default>1</default>
-                <constraints>
-                    <options>
-                        <option label="Ne">0</option>
-                        <option label="Ano">1</option>
-                    </options>
-                </constraints>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="movie.library.path" type="path" label="Složka pro filmy">
+          <level>0</level>
+          <default></default>
+          <control type="button" format="path">
+            <heading>Vyberte složku pro filmy</heading>
+          </control>
+        </setting>
+
+        <setting id="tvshow.library.path" type="path" label="Složka pro seriály">
+          <level>0</level>
+          <default></default>
+          <control type="button" format="path">
+            <heading>Vyberte složku pro seriály</heading>
+          </control>
+        </setting>
+
+      </group>
+      <group id="2">
+
+        <setting id="library.metadata.mode" type="integer" label="Režim metadat">
+          <level>0</level>
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="Pouze STRM">0</option>
+              <option label="STRM + NFO">1</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+        <setting id="library.update.mode" type="integer" label="Aktualizovat knihovnu po exportu">
+          <level>0</level>
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="Ne">0</option>
+              <option label="Ano">1</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ══════════════════════ Rodičovská kontrola ═══════════════════ -->
+    <!-- ════════════════════════════ Rodičovská kontrola ════════ -->
     <category id="parental" label="Rodičovská kontrola">
-        <group id="1">
-            <setting id="parental.control.enabled" type="boolean" label="Zapnout rodičovskou kontrolu">
-                <default>false</default>
-            </setting>
-            <setting id="parental.control.rating" type="integer" label="Maximální hodnocení">
-                <default>0</default>
-                <constraints>
-                    <options>
-                        <option label="Bez omezení">0</option>
-                        <option label="6+">1</option>
-                        <option label="12+">2</option>
-                        <option label="15+">3</option>
-                        <option label="18+">4</option>
-                    </options>
-                </constraints>
-            </setting>
-            <setting id="parental.control.start" type="integer" label="Aktivní od hodiny (0-23)">
-                <default>20</default>
-                <constraints>
-                    <minimum>0</minimum>
-                    <maximum>23</maximum>
-                    <step>1</step>
-                </constraints>
-            </setting>
-            <setting id="parental.control.end" type="integer" label="Aktivní do hodiny (0-23)">
-                <default>22</default>
-                <constraints>
-                    <minimum>0</minimum>
-                    <maximum>23</maximum>
-                    <step>1</step>
-                </constraints>
-            </setting>
-            <setting id="parental.control.dubed" type="boolean" label="Jen dabing při rodičovské kontrole">
-                <default>true</default>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="parental.control.enabled" type="boolean" label="Zapnout rodičovskou kontrolu">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="parental.control.rating" type="integer" label="Maximální hodnocení">
+          <level>0</level>
+          <default>0</default>
+          <constraints>
+            <options>
+              <option label="Bez omezení">0</option>
+              <option label="6+">1</option>
+              <option label="12+">2</option>
+              <option label="15+">3</option>
+              <option label="18+">4</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+
+        <setting id="parental.control.start" type="integer" label="Aktivní od hodiny (0–23)">
+          <level>0</level>
+          <default>20</default>
+          <constraints>
+            <minimum>0</minimum>
+            <maximum>23</maximum>
+            <step>1</step>
+          </constraints>
+          <control type="slider" format="integer" />
+        </setting>
+
+        <setting id="parental.control.end" type="integer" label="Aktivní do hodiny (0–23)">
+          <level>0</level>
+          <default>22</default>
+          <constraints>
+            <minimum>0</minimum>
+            <maximum>23</maximum>
+            <step>1</step>
+          </constraints>
+          <control type="slider" format="integer" />
+        </setting>
+
+        <setting id="parental.control.dubed" type="boolean" label="Jen dabing při rodičovské kontrole">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ════════════════════════════ Vzhled ══════════════════════════ -->
+    <!-- ════════════════════════════════════ Vzhled ══════════════ -->
     <category id="appearance" label="Vzhled">
-        <group id="1">
-            <setting id="plugin.show.genre" type="boolean" label="Zobrazit žánr v titulku">
-                <default>false</default>
-            </setting>
-            <setting id="plugin.show.old.menu" type="boolean" label="Zobrazit staré menu">
-                <default>false</default>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="plugin.show.genre" type="boolean" label="Zobrazit žánr v titulku">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="plugin.show.old.menu" type="boolean" label="Zobrazit staré menu">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+      </group>
     </category>
 
-    <!-- ════════════════════════════ Ladění ══════════════════════════ -->
+    <!-- ════════════════════════════════════ Ladění ══════════════ -->
     <category id="debug" label="Ladění">
-        <group id="1">
-            <setting id="plugin.debug" type="boolean" label="Zapnout debug log">
-                <default>false</default>
-            </setting>
-        </group>
+      <group id="1">
+
+        <setting id="plugin.debug" type="boolean" label="Zapnout debug log">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+      </group>
     </category>
 
+  </section>
 </settings>
