@@ -4,10 +4,28 @@ import xbmc
 import datetime
 import time
 import sqlite3
+import json
 from functools import reduce
 
 from resources.lib.common.logger import debug
 from resources.lib.constants import ADDON
+
+
+def _json_dumps(data):
+    """Serializace dat do JSON – bezpečná náhrada za repr()."""
+    try:
+        return json.dumps(data, ensure_ascii=False)
+    except (TypeError, ValueError):
+        # Fallback pro neserializovatelné typy (např. set, custom objekty)
+        return json.dumps(str(data), ensure_ascii=False)
+
+
+def _json_loads(raw):
+    """Deserializace dat z JSON – bezpečná náhrada za eval()."""
+    try:
+        return json.loads(raw)
+    except (ValueError, TypeError):
+        return None
 
 
 class SimpleCache(object):
@@ -87,13 +105,20 @@ class SimpleCache(object):
 
     def check_cleanup(self):
         """check if cleanup is needed - public method, may be called by calling addon"""
-        cur_time = datetime.datetime.now()
-        lastexecuted = self._win.getProperty("simplecache.clean.lastexecuted")
-        if not lastexecuted:
-            self._win.setProperty("simplecache.clean.lastexecuted", repr(cur_time))
-        elif (eval(lastexecuted) + self._auto_clean_interval) < cur_time:
-            # cleanup needed...
-            self._do_cleanup()
+        cur_time = self._get_timestamp(datetime.datetime.now())
+        lastexecuted_raw = self._win.getProperty("simplecache.clean.lastexecuted")
+        if not lastexecuted_raw:
+            self._win.setProperty("simplecache.clean.lastexecuted", str(cur_time))
+        else:
+            try:
+                last_ts = int(lastexecuted_raw)
+                interval_secs = int(self._auto_clean_interval.total_seconds())
+                if (last_ts + interval_secs) < cur_time:
+                    # cleanup needed...
+                    self._do_cleanup()
+            except (ValueError, TypeError):
+                # Neplatná hodnota – resetujeme timestamp
+                self._win.setProperty("simplecache.clean.lastexecuted", str(cur_time))
 
     def _get_mem_cache(self, endpoint, checksum, cur_time):
         """
@@ -101,14 +126,16 @@ class SimpleCache(object):
             we use window properties because we need to be stateless
         """
         result = None
-        cachedata = self._win.getProperty(endpoint)
+        cachedata_raw = self._win.getProperty(endpoint)
 
-        if cachedata:
-            cachedata = eval(cachedata)
+        if cachedata_raw:
+            cachedata = _json_loads(cachedata_raw)
+            if not cachedata or not isinstance(cachedata, list) or len(cachedata) != 3:
+                return None
+
             expires = cachedata[0]
 
             # Robustná kontrola: Detekcia časového posunu
-            # Ak je expires výrazne v budúcnosti (>24h), možný časový posun
             MAX_REASONABLE_CACHE = 86400  # 24 hodín
             time_diff = expires - cur_time
 
@@ -130,9 +157,8 @@ class SimpleCache(object):
             window property cache as alternative for memory cache
             usefull for (stateless) plugins
         """
-        cachedata = (expires, data, checksum)
-        cachedata_str = repr(cachedata)
-        self._win.setProperty(endpoint, cachedata_str)
+        cachedata = [expires, data, checksum]
+        self._win.setProperty(endpoint, _json_dumps(cachedata))
 
     def _get_db_cache(self, endpoint, checksum, cur_time):
         """get cache data from sqllite _database"""
@@ -158,17 +184,16 @@ class SimpleCache(object):
                 elif expires > cur_time:
                     # Cache je platná
                     if not checksum or cache_data[2] == checksum:
-                        result = eval(cache_data[1])
+                        result = _json_loads(cache_data[1])
                         # also set result in memory cache for further access
-                        if self.enable_mem_cache:
+                        if self.enable_mem_cache and result is not None:
                             self._set_mem_cache(endpoint, checksum, cache_data[0], result)
         return result
 
     def _set_db_cache(self, endpoint, checksum, expires, data):
         """ store cache data in _database """
         query = "INSERT OR REPLACE INTO simplecache( id, expires, data, checksum) VALUES (?, ?, ?, ?)"
-        data = repr(data)
-        self._execute_sql(query, (endpoint, expires, data, checksum))
+        self._execute_sql(query, (endpoint, expires, _json_dumps(data), checksum))
 
     def _do_cleanup(self):
         """perform cleanup task"""
@@ -204,7 +229,7 @@ class SimpleCache(object):
 
         # remove task from list
         self._busy_tasks.remove(__name__)
-        self._win.setProperty("simplecache.clean.lastexecuted", repr(cur_time))
+        self._win.setProperty("simplecache.clean.lastexecuted", str(cur_timestamp))
         self._win.clearProperty("simplecachecleanbusy")
         self._log_msg("Auto cleanup done")
 

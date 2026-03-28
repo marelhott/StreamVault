@@ -59,11 +59,11 @@ class Kraska:
     def set_token(self, token):
         if token != self.token:
             self.token = token
-            debug('kra set token: {}'.format(str(token)))
+            debug('kra set token: [MASKED]')
             checksum_credentials = self._get_chsum(self.username, self.password)
             set_setting('kraska.chsum', '{}'.format(checksum_credentials))
             set_setting('kraska.token', '{}'.format(token))
-            debug('kra set chsum: {}'.format(checksum_credentials))
+            debug('kra set chsum: [OK]')
 
     @staticmethod
     def _get_chsum(username, password):
@@ -72,7 +72,7 @@ class Kraska:
     def get_token(self):
         # debug('get_token start')
         if self.token is not False:
-            debug('kra get_token: {}'.format(self.token))
+            debug('kra get_token: [MASKED]')
             return self.token
         try:
             chsum = get_setting('kraska.chsum')
@@ -91,7 +91,7 @@ class Kraska:
             return False
         # debug('get_token from settings')
         token = get_setting('kraska.token')
-        debug('kra get cached token: {}'.format(token))
+        debug('kra get cached token: [MASKED]')
         if token == '' or 'False' == token or None is token:
             debug('kra get_token: token is empty')
             token = False

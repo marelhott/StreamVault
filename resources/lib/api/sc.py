@@ -213,7 +213,7 @@ class Sc:
                             if len(data.text) == 32:
                                 token = data.text
                                 set_setting('system.auth_token', token)
-                                debug('get auth token from backup file: {}'.format(token))
+                                debug('get auth token from backup file: [MASKED]')
                                 return token
                         except Exception as e:
                             debug('error get auth token: {}'.format(traceback.format_exc()))
@@ -227,13 +227,13 @@ class Sc:
                 res = Http.post(url, params=sorted_values, headers=Sc.headers(False))
                 res.raise_for_status()
                 ret = res.json()
-                debug('get auth token: {}'.format(ret))
+                debug('get auth token: response received')
 
                 if 'error' in ret:
-                    debug('error get auth token: {}'.format(ret))
+                    debug('error get auth token: {}'.format(ret.get('error', '?')))
                     return None
                 if 'token' not in ret:
-                    debug('error get auth token: {}'.format(ret))
+                    debug('error get auth token: token key missing in response')
                     return None
                 token = ret['token']
                 set_setting('system.auth_token', token)
@@ -278,11 +278,10 @@ class Sc:
 
     @staticmethod
     def up_next(id, s, e):
-        return {'error': 'error'};
         url = '/upNext/{}/{}/{}'.format(id, s, e)
         try:
             data = Sc.get(url, ttl=3600)
-        except:
+        except Exception:
             data = {'error': 'error'}
         return data
 
@@ -336,7 +335,7 @@ class Sc:
     @staticmethod
     def download_menu_bg():
         from threading import Thread
-        worker = Thread(target=Sc.download_menu())
+        worker = Thread(target=Sc.download_menu)
         worker.start()
 
     @staticmethod
